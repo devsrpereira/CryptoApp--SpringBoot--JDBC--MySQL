@@ -19,33 +19,6 @@ public class CoinController {
     @Autowired
     private CoinRepository coinRepository;
 
-    @Bean
-    public Coin init(){
-        Coin c1 = new Coin();
-        c1.setName("BITCOIN");
-        c1.setPrice(new BigDecimal(100));
-        c1.setQuantity(new BigDecimal(0.005));
-        c1.setDateTime(new Timestamp(System.currentTimeMillis()));
-
-        Coin c2 = new Coin();
-        c2.setName("BITCOIN");
-        c2.setPrice(new BigDecimal(200));
-        c2.setQuantity(new BigDecimal(0.01));
-        c2.setDateTime(new Timestamp(System.currentTimeMillis()));
-
-        Coin c3 = new Coin();
-        c3.setName("ETHEREUM");
-        c3.setPrice(new BigDecimal(500));
-        c3.setQuantity(new BigDecimal(0.100));
-        c3.setDateTime(new Timestamp(System.currentTimeMillis()));
-
-        coinRepository.insert(c1);
-        coinRepository.insert(c2);
-        coinRepository.insert(c3);
-
-        return c1;
-    }
-
     @GetMapping()
     public ResponseEntity get(){
         return new ResponseEntity<>(coinRepository.getAll(), HttpStatus.OK);
